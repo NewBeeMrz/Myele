@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.CollectDao">
+	<select id="getCollectbyID" parameterType="Integer" resultType="collect">
+		select collect.* 
+		from collect,users,store 
+		where collect.user_id = users.user_id
+		and collect.s_id = store.s_id
+		and collect.user_id = #{user_id}
+		and collect.s_id = #{s_id}
+	</select>
+	
+	<insert id="collected" parameterType="Integer">
+		insert into collect(user_id,s_id) values(#{user_id},#{s_id})
+	</insert>
+	
+	<delete id="cancelCollect"  parameterType="Integer">
+		delete from collect where c_id = #{c_id}
+	</delete>
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.CommentDao">
+	<select id="getAllComment"  resultType="comment">
+		select * from comments order by time desc
+	</select>
+	
+	<insert id="newComment" parameterType="comment">
+		insert into comments(userName,time,content) values(#{userName},#{time},#{content})
+	</insert>
+	
+	<select id="getCommentbyUser" parameterType="String" resultType="comment">
+		select * from comments where userName = #{userName}
+	</select>
+	
+	<delete id="deleteComment">
+		delete from comments where time = #{time}
+	</delete>
+</mapper>

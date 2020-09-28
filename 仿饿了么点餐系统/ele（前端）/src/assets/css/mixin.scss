@@ -1,0 +1,82 @@
+$blue:#00A9FF;  
+$bgColor:#f5f5f5;
+$fontTColor:#333;
+$fontMColor:#666;
+$fontBColor:#999;
+
+// 盒子标准
+@mixin box-sizing($top, $right, $bottom, $left) {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    box-sizing:border-box;
+    padding: $top $right $bottom $left;
+}
+
+// 超出文本省略
+@mixin ell {
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+ 
+@mixin ellMore($lineNumber:2){
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $lineNumber;
+    -webkit-box-orient: vertical;
+}
+
+// 清除浮动
+@mixin clearfix {
+    &:after {
+        clear: both;
+		content: '';
+		display: block;
+		height: 0;
+		width: 0;
+	    visibility: hidden;
+    }
+}
+
+//垂直居中
+@mixin verticalCenter {  
+	position: absolute;
+	top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+//上下居中
+@mixin upDownCenter {  
+	position: absolute;
+	top: 50%;
+    transform: translateY(-50%);
+}
+
+//左右居中
+@mixin leftRightCenter {  
+	position: absolute;
+	left: 50%;
+    transform: translateX(-50%);
+}
+
+//宽高
+@mixin widthHeight($width, $height:auto){
+	width: $width;
+	height: $height;
+}
+
+//字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'Microsoft YaHei') {  
+	font: #{$size}/#{$line-height} $family;
+}
+
+//字体大小，颜色
+@mixin fontSizeColor($size, $color){
+	font-size: $size;
+	color: $color;
+}
+
